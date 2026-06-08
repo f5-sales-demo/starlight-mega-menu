@@ -11,6 +11,7 @@ export type {
   MegaMenuCategory,
   MegaMenuLink,
   MegaMenuFooter,
+  I18nString,
 } from './types';
 
 export default function starlightMegaMenu(config: MegaMenuConfig): StarlightPlugin {
@@ -47,11 +48,11 @@ export default function starlightMegaMenu(config: MegaMenuConfig): StarlightPlug
         updateConfig({
           customCss: [
             ...(starlightConfig.customCss ?? []),
-            'starlight-mega-menu/components/mega-menu.css',
+            '@f5xc-salesdemos/starlight-mega-menu/components/mega-menu.css',
           ],
           components: {
             ...starlightConfig.components,
-            Header: 'starlight-mega-menu/components/Header.astro',
+            Header: '@f5xc-salesdemos/starlight-mega-menu/components/Header.astro',
           },
         });
 

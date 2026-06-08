@@ -1,9 +1,12 @@
 {
-  "name": "starlight-mega-menu",
+  "name": "@f5xc-salesdemos/starlight-mega-menu",
   "version": "0.0.0-development",
-  "description": "A mega-menu navigation plugin for Astro Starlight",
+  "description": "A mega-menu navigation plugin for Astro Starlight with i18n support",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": "./index.ts",
     "./components/Header.astro": "./components/Header.astro",

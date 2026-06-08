@@ -1,50 +1,50 @@
+export type I18nString = Record<string, string>;
+
 export interface MegaMenuConfig {
   items: MegaMenuItem[];
+  mobileLabels?: {
+    open?: string;
+    openTranslations?: I18nString;
+    close?: string;
+    closeTranslations?: I18nString;
+    menu?: string;
+    menuTranslations?: I18nString;
+  };
 }
 
 export interface MegaMenuItem {
-  /** Display label for the menu item */
   label: string;
-  /** Simple link (no dropdown). Mutually exclusive with `content`. */
+  translations?: I18nString;
   href?: string;
-  /** Dropdown panel content. Mutually exclusive with `href`. */
   content?: MegaMenuPanel;
 }
 
 export interface MegaMenuPanel {
-  /** Panel layout style. Default: 'list' */
   layout?: 'grid' | 'list';
-  /** Number of grid columns (only applies when layout is 'grid'). Default: 2 */
   columns?: number;
-  /** Grouped link categories within the panel */
   categories?: MegaMenuCategory[];
-  /** Optional footer link at the bottom of the panel */
   footer?: MegaMenuFooter;
 }
 
 export interface MegaMenuCategory {
-  /** Category heading */
   title: string;
-  /** Links within this category */
+  translations?: I18nString;
   items: MegaMenuLink[];
 }
 
 export interface MegaMenuLink {
-  /** Display label */
   label: string;
-  /** Optional description text below the label */
+  translations?: I18nString;
   description?: string;
-  /** Link URL */
+  descriptionTranslations?: I18nString;
   href: string;
-  /** Optional inline SVG string for an icon */
   icon?: string;
 }
 
 export interface MegaMenuFooter {
-  /** Footer link label */
   label: string;
-  /** Footer link URL */
+  translations?: I18nString;
   href: string;
-  /** Optional description */
   description?: string;
+  descriptionTranslations?: I18nString;
 }

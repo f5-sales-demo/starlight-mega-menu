@@ -1,5 +1,18 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { MegaMenuConfig } from '../types';
+import type { MegaMenuConfig, I18nString } from '../types';
+
+function t(text: string, translations?: I18nString, locale?: string): string {
+  if (!translations || !locale) return text;
+  return translations[locale] || text;
+}
+
+function useLocale(): string {
+  const [locale, setLocale] = useState('en');
+  useEffect(() => {
+    setLocale(document.documentElement.lang || 'en');
+  }, []);
+  return locale;
+}
 
 function HamburgerIcon() {
   return (
@@ -47,13 +60,14 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const locale = useLocale();
+  const ml = config.mobileLabels;
 
   const close = useCallback(() => {
     setIsOpen(false);
     triggerRef.current?.focus();
   }, []);
 
-  // Close on Escape key
   useEffect(() => {
     if (!isOpen) return;
     function handleKeyDown(e: KeyboardEvent) {
@@ -65,7 +79,6 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, close]);
 
-  // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -77,7 +90,6 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
     };
   }, [isOpen]);
 
-  // Focus trap: focus the dialog when it opens
   useEffect(() => {
     if (isOpen && dialogRef.current) {
       dialogRef.current.focus();
@@ -91,31 +103,29 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
         className="smm-mobile-button"
         onClick={() => setIsOpen(true)}
         aria-expanded={isOpen}
-        aria-label="Open navigation menu"
+        aria-label={t(ml?.open || 'Open navigation menu', ml?.openTranslations, locale)}
       >
         <HamburgerIcon />
       </button>
 
       {isOpen && (
         <>
-          {/* Backdrop */}
           <div className="smm-mobile-backdrop" onClick={close} />
 
-          {/* Overlay panel */}
           <div
             ref={dialogRef}
             className="smm-mobile-overlay"
             role="dialog"
             aria-modal="true"
-            aria-label="Navigation menu"
+            aria-label={t(ml?.menu || 'Menu', ml?.menuTranslations, locale)}
             tabIndex={-1}
           >
             <div className="smm-mobile-header">
-              <span className="smm-mobile-title">Menu</span>
+              <span className="smm-mobile-title">{t(ml?.menu || 'Menu', ml?.menuTranslations, locale)}</span>
               <button
                 className="smm-mobile-close"
                 onClick={close}
-                aria-label="Close navigation menu"
+                aria-label={t(ml?.close || 'Close navigation menu', ml?.closeTranslations, locale)}
               >
                 <CloseIcon />
               </button>
@@ -126,7 +136,7 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                 item.content ? (
                   <details key={item.label} className="smm-mobile-section">
                     <summary className="smm-mobile-summary">
-                      {item.label}
+                      {t(item.label, item.translations, locale)}
                       <svg
                         className="smm-mobile-chevron"
                         xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +158,7 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                     <div className="smm-mobile-panel">
                       {item.content.categories?.map((category) => (
                         <div key={category.title} className="smm-mobile-category">
-                          <h3 className="smm-mobile-category-title">{category.title}</h3>
+                          <h3 className="smm-mobile-category-title">{t(category.title, category.translations, locale)}</h3>
                           <ul className="smm-mobile-category-list">
                             {category.items.map((link) => (
                               <li key={link.href}>
@@ -164,9 +174,9 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                                     />
                                   )}
                                   <span className="smm-mobile-link-text">
-                                    <span className="smm-mobile-link-label">{link.label}</span>
+                                    <span className="smm-mobile-link-label">{t(link.label, link.translations, locale)}</span>
                                     {link.description && (
-                                      <span className="smm-mobile-link-desc">{link.description}</span>
+                                      <span className="smm-mobile-link-desc">{t(link.description, link.descriptionTranslations, locale)}</span>
                                     )}
                                   </span>
                                 </a>
@@ -181,7 +191,7 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                           href={item.content.footer.href}
                           onClick={close}
                         >
-                          {item.content.footer.label}
+                          {t(item.content.footer.label, item.content.footer.translations, locale)}
                         </a>
                       )}
                     </div>
@@ -193,7 +203,7 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                     href={item.href}
                     onClick={close}
                   >
-                    {item.label}
+                    {t(item.label, item.translations, locale)}
                   </a>
                 )
               )}
