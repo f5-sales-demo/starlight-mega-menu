@@ -24,6 +24,12 @@
     "navigation",
     "withastro"
   ],
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
   "peerDependencies": {
     "@astrojs/starlight": ">=0.34.0",
     "@astrojs/react": ">=4.0.0",
