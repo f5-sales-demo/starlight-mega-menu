@@ -10,6 +10,17 @@ indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = true
+indent_size = unset
+
+[*.mdx]
+indent_size = unset
+
+[*.py]
+indent_size = 4
+
+[*.go]
+indent_style = tab
+indent_size = 4
 
 [Makefile]
 indent_style = tab
