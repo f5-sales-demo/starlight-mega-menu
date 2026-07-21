@@ -1,7 +1,15 @@
-import * as React from 'react';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import type { MegaMenuConfig, MegaMenuPanel, MegaMenuCategory, MegaMenuLink as MegaMenuLinkType, MegaMenuFooter, I18nString } from '../types';
+import * as React from 'react';
 import { langToSlug, localizeEcosystemHref } from '../libs/localize-ecosystem-href.ts';
+import type {
+  I18nString,
+  MegaMenuCategory,
+  MegaMenuConfig,
+  MegaMenuFooter,
+  MegaMenuLink as MegaMenuLinkType,
+  MegaMenuPanel,
+} from '../types';
+import { ICONS } from './icons.tsx';
 
 function useLocale(): string {
   const [locale, setLocale] = React.useState('en');
@@ -46,7 +54,7 @@ function PanelContent({ panel, locale }: { panel: MegaMenuPanel; locale: string 
     <div
       className="smm-panel"
       data-layout={layout}
-      style={layout === 'grid' ? { '--smm-columns': columns } as React.CSSProperties : undefined}
+      style={layout === 'grid' ? ({ '--smm-columns': columns } as React.CSSProperties) : undefined}
     >
       {panel.categories?.map((category) => (
         <CategorySection key={category.title} category={category} locale={locale} />
@@ -74,9 +82,7 @@ function CategorySection({ category, locale }: { category: MegaMenuCategory; loc
 function LinkItem({ item, locale }: { item: MegaMenuLinkType; locale: string }) {
   return (
     <NavigationMenu.Link className="smm-menu-link" href={localizeEcosystemHref(item.href, langToSlug(locale))}>
-      {item.icon && (
-        <span className="smm-link-icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
-      )}
+      {item.icon && <span className="smm-link-icon">{ICONS[item.icon]}</span>}
       <span className="smm-link-text">
         <span className="smm-link-label">{t(item.label, item.translations, locale)}</span>
         {item.description && (
@@ -93,7 +99,9 @@ function PanelFooter({ footer, locale }: { footer: MegaMenuFooter; locale: strin
       <NavigationMenu.Link className="smm-footer-link" href={localizeEcosystemHref(footer.href, langToSlug(locale))}>
         <span className="smm-footer-label">{t(footer.label, footer.translations, locale)}</span>
         {footer.description && (
-          <span className="smm-footer-description">{t(footer.description, footer.descriptionTranslations, locale)}</span>
+          <span className="smm-footer-description">
+            {t(footer.description, footer.descriptionTranslations, locale)}
+          </span>
         )}
         <svg
           className="smm-footer-arrow"
@@ -136,11 +144,14 @@ export default function MegaMenu({ config }: { config: MegaMenuConfig }) {
             </NavigationMenu.Item>
           ) : (
             <NavigationMenu.Item key={item.label}>
-              <NavigationMenu.Link className="smm-link" href={localizeEcosystemHref(item.href || '', langToSlug(locale))}>
+              <NavigationMenu.Link
+                className="smm-link"
+                href={localizeEcosystemHref(item.href || '', langToSlug(locale))}
+              >
                 {t(item.label, item.translations, locale)}
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-          )
+          ),
         )}
         <NavigationMenu.Indicator className="smm-indicator">
           <div className="smm-arrow" />

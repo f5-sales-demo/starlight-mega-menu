@@ -1,11 +1,10 @@
 ---
-import config from 'virtual:starlight/user-config';
-
 import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import config from 'virtual:starlight/user-config';
 import megaMenuConfig from 'virtual:starlight-mega-menu/config';
 import MegaMenu from './MegaMenu.tsx';
 import MegaMenuMobile from './MegaMenuMobile.tsx';
@@ -13,8 +12,7 @@ import MegaMenuMobile from './MegaMenuMobile.tsx';
 /**
  * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
  */
-const shouldRenderSearch =
-	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+const shouldRenderSearch = config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 ---
 
 <div class="header sl-mega-menu-header">
