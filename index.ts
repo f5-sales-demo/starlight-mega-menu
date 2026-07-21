@@ -1,17 +1,16 @@
-import type { StarlightPlugin } from '@astrojs/starlight/types';
 import react from '@astrojs/react';
-
-import type { MegaMenuConfig } from './types';
+import type { StarlightPlugin } from '@astrojs/starlight/types';
 import { vitePluginMegaMenuConfig } from './libs/vite';
+import type { MegaMenuConfig } from './types';
 
 export type {
-  MegaMenuConfig,
-  MegaMenuItem,
-  MegaMenuPanel,
-  MegaMenuCategory,
-  MegaMenuLink,
-  MegaMenuFooter,
   I18nString,
+  MegaMenuCategory,
+  MegaMenuConfig,
+  MegaMenuFooter,
+  MegaMenuItem,
+  MegaMenuLink,
+  MegaMenuPanel,
 } from './types';
 
 export default function starlightMegaMenu(config: MegaMenuConfig): StarlightPlugin {
@@ -20,9 +19,7 @@ export default function starlightMegaMenu(config: MegaMenuConfig): StarlightPlug
     hooks: {
       'config:setup'({ config: starlightConfig, updateConfig, addIntegration, astroConfig, logger }) {
         // 1. Conditionally add @astrojs/react if not already loaded
-        const isReactLoaded = astroConfig.integrations.find(
-          ({ name }) => name === '@astrojs/react'
-        );
+        const isReactLoaded = astroConfig.integrations.find(({ name }) => name === '@astrojs/react');
         if (!isReactLoaded) {
           addIntegration(react());
         }
