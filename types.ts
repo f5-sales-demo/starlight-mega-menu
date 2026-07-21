@@ -1,3 +1,7 @@
+import type { MegaMenuIconName } from './components/icons.tsx';
+
+export type { MegaMenuIconName };
+
 export type I18nString = Record<string, string>;
 
 export interface MegaMenuConfig {
@@ -38,7 +42,7 @@ export interface MegaMenuLink {
   description?: string;
   descriptionTranslations?: I18nString;
   href: string;
-  icon?: string;
+  icon?: MegaMenuIconName;
 }
 
 export interface MegaMenuFooter {
