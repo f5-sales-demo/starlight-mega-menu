@@ -1,7 +1,7 @@
 {
   "repository": {
     "description": "A mega-menu navigation plugin for Astro Starlight",
-    "homepage": "https://robinmordasiewicz.github.io/starlight-mega-menu/"
+    "homepage": "https://f5-sales-demo.github.io/starlight-mega-menu/"
   },
   "topics": ["starlight", "astro", "mega-menu", "navigation", "plugin"]
 }
