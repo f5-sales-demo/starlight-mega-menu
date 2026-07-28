@@ -20,7 +20,6 @@
 
 A mega-menu navigation plugin for Astro Starlight
 
-
 ## Documentation
 
 Full documentation is available at **[https://f5-sales-demo.github.io/starlight-mega-menu/](https://f5-sales-demo.github.io/starlight-mega-menu/)**.
