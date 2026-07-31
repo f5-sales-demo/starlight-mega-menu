@@ -1,3 +1,12 @@
+// Imported by components/MegaMenu.tsx and components/MegaMenuMobile.tsx.
+//
+// Stated here because this module was once deleted as a "dead duplicate" on the
+// grounds that it "was not exported, imported, or tested" (d499223). It was imported,
+// by both of those components, and removing it broke the documentation build of every
+// consumer of this package until it was restored in #96. There is still no CI gate that
+// would catch an unresolvable import (#97), so until there is, this comment is the
+// guard.
+
 import { bcp47ToSlug, VALID_SLUGS } from '@f5-sales-demo/i18n-core';
 
 const ECOSYSTEM_HOST = 'f5-sales-demo.github.io';
