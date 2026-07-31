@@ -1,4 +1,4 @@
-import { VALID_SLUGS, bcp47ToSlug } from '@f5-sales-demo/i18n-core';
+import { bcp47ToSlug, VALID_SLUGS } from '@f5-sales-demo/i18n-core';
 
 const ECOSYSTEM_HOST = 'f5-sales-demo.github.io';
 
@@ -32,7 +32,7 @@ export function localizeEcosystemHref(
   }
 
   segments.splice(1, 0, localeSlug);
-  url.pathname = '/' + segments.join('/') + '/';
+  url.pathname = `/${segments.join('/')}/`;
 
   return url.toString();
 }
