@@ -1,4 +1,4 @@
-import type { AstroIntegration } from "astro";
+import type { AstroIntegration } from 'astro';
 
 interface StarlightConfigSetupContext {
   addIntegration: (integration: AstroIntegration) => void;
@@ -12,17 +12,12 @@ interface StarlightConfigSetupContext {
   logger: {
     info: (message: string) => void;
   };
-  updateConfig: (config: {
-    components?: Record<string, string>;
-    customCss?: string[];
-  }) => void;
+  updateConfig: (config: { components?: Record<string, string>; customCss?: string[] }) => void;
 }
 
 export interface StarlightPlugin {
   hooks: {
-    "config:setup": (
-      context: StarlightConfigSetupContext,
-    ) => Promise<void> | void;
+    'config:setup': (context: StarlightConfigSetupContext) => Promise<void> | void;
   };
   name: string;
 }
