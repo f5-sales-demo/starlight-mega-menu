@@ -5,6 +5,16 @@
   "description": "A mega-menu navigation plugin for Astro Starlight with i18n support",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "files": [
+    "components/",
+    "env.d.ts",
+    "index.ts",
+    "libs/",
+    "types.ts"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -25,11 +35,18 @@
     "navigation",
     "withastro"
   ],
+  "scripts": {
+    "test": "npm run typecheck && node --test tests/package-contract.test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
   "peerDependencies": {
-    "@astrojs/starlight": ">=0.34.0",
     "@astrojs/react": ">=4.0.0",
+    "@astrojs/starlight": ">=0.34.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
   },
   "dependencies": {
     "@f5-sales-demo/i18n-core": "^1.0.0",
