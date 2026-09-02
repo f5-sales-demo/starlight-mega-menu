@@ -1,0 +1,34 @@
+---
+name: Package Integrity
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-integrity-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Typecheck and verify package
+    runs-on: managed-socketless
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Verify immutable Node toolchain
+        run: |
+          test "$(node --version)" = v22.23.2
+          test "$(npm --version)" = 10.8.1
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Verify imports and publish contents
+        run: npm test
