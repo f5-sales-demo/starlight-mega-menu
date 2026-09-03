@@ -1,7 +1,6 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@astrojs/starlight/types": ["./test-support/starlight-types.d.ts"]
     }
