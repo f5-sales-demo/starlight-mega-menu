@@ -1,0 +1,75 @@
+---
+title: Starlight Mega Menu Plugin
+description: Drop-in multi-column mega-menu navigation component for Astro Starlight documentation sites.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+The **starlight-mega-menu** plugin replaces or enhances the standard top-level header navigation in Astro Starlight with a responsive, multi-column mega-menu dropdown. It allows documentation sites across the ecosystem to organize complex multi-tier navigation hierarchies with icon support, category columns, and footers.
+
+## Features
+
+<CardGrid>
+  <Card title="Multi-Column Grid Layouts" icon="puzzle">
+    Configure flexible column spans with organized categories and link groups.
+  </Card>
+  <Card title="Rich Iconography" icon="star">
+    Native integration with Lucide, Carbon, and custom F5 XC icon sets.
+  </Card>
+  <Card title="Internationalization Ready" icon="translate">
+    Full multi-locale translation support for labels, descriptions, and footer links.
+  </Card>
+  <Card title="Keyboard Accessible" icon="laptop">
+    Full WAI-ARIA compliance with Esc key handling, tab trapping, and screen reader labels.
+  </Card>
+</CardGrid>
+
+## Installation
+
+```bash
+npm install @f5-sales-demo/starlight-mega-menu
+```
+
+## Quick Configuration
+
+Add the plugin to your `astro.config.mjs`:
+
+```typescript
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import starlightMegaMenu from '@f5-sales-demo/starlight-mega-menu';
+
+export default defineConfig({
+  integrations: [
+    starlight({
+      title: 'Example Documentation',
+      plugins: [
+        starlightMegaMenu({
+          items: [
+            {
+              label: 'Solutions',
+              content: {
+                layout: 'grid',
+                columns: 2,
+                categories: [
+                  {
+                    title: 'Security',
+                    items: [
+                      {
+                        label: 'Web Application Firewall',
+                        description: 'WAF rules and signature inspection',
+                        href: 'https://docs.example.com/waf/',
+                        icon: 'shield',
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        }),
+      ],
+    }),
+  ],
+});
+```

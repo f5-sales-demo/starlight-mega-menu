@@ -1,0 +1,35 @@
+---
+title: Mega Menu Configuration Reference
+description: TypeScript interfaces, properties, and configuration schema for starlight-mega-menu.
+---
+
+## TypeScript Interfaces
+
+### `MegaMenuConfig`
+
+The root configuration object passed to the plugin integration:
+
+```typescript
+export interface MegaMenuConfig {
+  items: MegaMenuItem[];
+  mobileLabels?: {
+    open?: string;
+    openTranslations?: Record<string, string>;
+    close?: string;
+    closeTranslations?: Record<string, string>;
+    menu?: string;
+    menuTranslations?: Record<string, string>;
+  };
+}
+```
+
+### `MegaMenuItem`
+
+Represents a top-level navigation item on the header bar:
+
+| Property | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `label` | `string` | Yes | Primary display text in the navigation header. |
+| `href` | `string` | No | Direct URL link if the item is a standalone link rather than a dropdown. |
+| `translations` | `Record<string, string>` | No | Localized labels mapped by BCP-47 locale tag (e.g., `{"ja": "ソリューション"}`). |
+| `content` | `MegaMenuPanel` | No | Dropdown panel definition containing categories and links. |
