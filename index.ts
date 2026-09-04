@@ -12,6 +12,7 @@ export type {
   MegaMenuItem,
   MegaMenuLink,
   MegaMenuPanel,
+  MegaMenuSvgIcon,
 } from './types';
 
 export default function starlightMegaMenu(config: MegaMenuConfig): StarlightPlugin {

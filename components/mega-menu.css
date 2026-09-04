@@ -237,6 +237,22 @@
   height: 100%;
 }
 
+.smm-svg-image {
+  display: block;
+  object-fit: contain;
+}
+
+.smm-svg-mask {
+  display: block;
+  background-color: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
 .smm-link-text {
   display: flex;
   flex-direction: column;

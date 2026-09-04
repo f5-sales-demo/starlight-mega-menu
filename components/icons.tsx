@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import * as React from 'react';
 
 /**
  * Vetted inline-SVG icon registry for mega-menu link icons.
