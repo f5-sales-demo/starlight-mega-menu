@@ -2,6 +2,18 @@ import type { MegaMenuIconName } from './components/icons.tsx';
 
 export type { MegaMenuIconName };
 
+/** A serializable SVG icon that can be rendered without inserting markup into the DOM. */
+export interface MegaMenuSvgIcon {
+  /** SVG child markup, excluding the outer `<svg>` element. */
+  body: string;
+  /** Intrinsic SVG viewBox width. */
+  width: number;
+  /** Intrinsic SVG viewBox height. */
+  height: number;
+  /** Preserve original fills or render the icon using the link's current color. */
+  mode: 'original' | 'currentColor';
+}
+
 export type I18nString = Record<string, string>;
 
 export interface MegaMenuConfig {
@@ -42,7 +54,7 @@ export interface MegaMenuLink {
   description?: string;
   descriptionTranslations?: I18nString;
   href: string;
-  icon?: MegaMenuIconName;
+  icon?: MegaMenuIconName | MegaMenuSvgIcon;
 }
 
 export interface MegaMenuFooter {

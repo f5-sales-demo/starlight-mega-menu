@@ -9,7 +9,7 @@ import type {
   MegaMenuLink as MegaMenuLinkType,
   MegaMenuPanel,
 } from '../types';
-import { ICONS } from './icons.tsx';
+import { MegaMenuIcon } from './MegaMenuIcon.tsx';
 
 function useLocale(): string {
   const [locale, setLocale] = React.useState('en');
@@ -82,7 +82,7 @@ function CategorySection({ category, locale }: { category: MegaMenuCategory; loc
 function LinkItem({ item, locale }: { item: MegaMenuLinkType; locale: string }) {
   return (
     <NavigationMenu.Link className="smm-menu-link" href={localizeEcosystemHref(item.href, langToSlug(locale))}>
-      {item.icon && <span className="smm-link-icon">{ICONS[item.icon]}</span>}
+      <MegaMenuIcon icon={item.icon} className="smm-link-icon" />
       <span className="smm-link-text">
         <span className="smm-link-label">{t(item.label, item.translations, locale)}</span>
         {item.description && (

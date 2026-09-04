@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { langToSlug, localizeEcosystemHref } from '../libs/localize-ecosystem-href.ts';
 import type { I18nString, MegaMenuConfig } from '../types';
-import { ICONS } from './icons.tsx';
+import { MegaMenuIcon } from './MegaMenuIcon.tsx';
 
 function t(text: string, translations?: I18nString, locale?: string): string {
   if (!translations || !locale) return text;
@@ -164,7 +164,7 @@ export default function MegaMenuMobile({ config }: { config: MegaMenuConfig }) {
                                   href={localizeEcosystemHref(link.href, langToSlug(locale))}
                                   onClick={close}
                                 >
-                                  {link.icon && <span className="smm-mobile-link-icon">{ICONS[link.icon]}</span>}
+                                  <MegaMenuIcon icon={link.icon} className="smm-mobile-link-icon" />
                                   <span className="smm-mobile-link-text">
                                     <span className="smm-mobile-link-label">
                                       {t(link.label, link.translations, locale)}

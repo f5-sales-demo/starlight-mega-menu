@@ -36,7 +36,7 @@
     "withastro"
   ],
   "scripts": {
-    "test": "npm run typecheck && node --test tests/package-contract.test.mjs",
+    "test": "npm run typecheck && TSX_TSCONFIG_PATH=tests/tsconfig.json node --import tsx --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -46,6 +46,7 @@
     "react-dom": ">=19.2.8"
   },
   "devDependencies": {
+    "tsx": "^4.20.6",
     "typescript": "7.0.2"
   },
   "dependencies": {
