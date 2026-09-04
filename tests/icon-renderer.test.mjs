@@ -13,10 +13,8 @@ function render(icon, className = 'smm-link-icon') {
   return renderToStaticMarkup(createElement(MegaMenuIcon, { icon, className }));
 }
 
-test('renders named registry icons with decorative semantics', () => {
-  const html = render('book');
-  assert.match(html, /class="smm-link-icon"/);
-  assert.match(html, /<svg[^>]+aria-hidden="true"/);
+test('rejects obsolete named registry values', () => {
+  assert.equal(render('book'), '');
 });
 
 test('renders original-color descriptors as encoded isolated images', () => {
@@ -76,4 +74,12 @@ test('source never reintroduces raw DOM injection', () => {
   for (const path of ['components/MegaMenuIcon.tsx', 'components/MegaMenu.tsx', 'components/MegaMenuMobile.tsx']) {
     assert.doesNotMatch(readFileSync(resolve(root, path), 'utf8'), /dangerouslySetInnerHTML/);
   }
+});
+
+test('public types expose only the descriptor icon contract', () => {
+  const types = readFileSync(resolve(root, 'types.ts'), 'utf8');
+  const index = readFileSync(resolve(root, 'index.ts'), 'utf8');
+  assert.doesNotMatch(types, /MegaMenuIconName/);
+  assert.doesNotMatch(index, /MegaMenuIconName/);
+  assert.match(types, /icon\?: MegaMenuSvgIcon;/);
 });

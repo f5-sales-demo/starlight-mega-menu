@@ -1,11 +1,9 @@
 /** @jsxRuntime automatic */
 import type * as React from 'react';
 import type { MegaMenuSvgIcon } from '../types.ts';
-import type { MegaMenuIconName } from './icons.tsx';
-import { ICONS } from './icons.tsx';
 
 interface MegaMenuIconProps {
-  icon: MegaMenuIconName | MegaMenuSvgIcon | undefined;
+  icon: MegaMenuSvgIcon | undefined;
   className: string;
 }
 
@@ -31,12 +29,8 @@ function svgDataUri(icon: MegaMenuSvgIcon): string {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-/** Renders registry and serializable SVG icons through one safe desktop/mobile path. */
+/** Renders serializable SVG descriptors through one safe desktop/mobile path. */
 export function MegaMenuIcon({ icon, className }: MegaMenuIconProps): React.ReactElement | null {
-  if (typeof icon === 'string') {
-    const registryIcon = ICONS[icon as MegaMenuIconName];
-    return registryIcon ? <span className={className}>{registryIcon}</span> : null;
-  }
   if (!isSvgIcon(icon)) return null;
 
   const uri = svgDataUri(icon);

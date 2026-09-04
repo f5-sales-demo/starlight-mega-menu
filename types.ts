@@ -1,7 +1,3 @@
-import type { MegaMenuIconName } from './components/icons.tsx';
-
-export type { MegaMenuIconName };
-
 /** A serializable SVG icon that can be rendered without inserting markup into the DOM. */
 export interface MegaMenuSvgIcon {
   /** SVG child markup, excluding the outer `<svg>` element. */
@@ -54,7 +50,7 @@ export interface MegaMenuLink {
   description?: string;
   descriptionTranslations?: I18nString;
   href: string;
-  icon?: MegaMenuIconName | MegaMenuSvgIcon;
+  icon?: MegaMenuSvgIcon;
 }
 
 export interface MegaMenuFooter {

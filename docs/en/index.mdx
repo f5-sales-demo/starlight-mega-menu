@@ -14,7 +14,7 @@ The **starlight-mega-menu** plugin replaces or enhances the standard top-level h
     Configure flexible column spans with organized categories and link groups.
   </Card>
   <Card title="Rich Iconography" icon="star">
-    Native integration with Lucide, Carbon, and custom F5 XC icon sets.
+    Serializable SVG descriptors preserve branded artwork and theme-aware monochrome icons.
   </Card>
   <Card title="Internationalization Ready" icon="translate">
     Full multi-locale translation support for labels, descriptions, and footer links.
@@ -59,7 +59,12 @@ export default defineConfig({
                         label: 'Web Application Firewall',
                         description: 'WAF rules and signature inspection',
                         href: 'https://docs.example.com/waf/',
-                        icon: 'shield',
+                        icon: {
+                          body: '<path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z"/>',
+                          width: 24,
+                          height: 24,
+                          mode: 'currentColor',
+                        },
                       },
                     ],
                   },

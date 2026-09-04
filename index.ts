@@ -8,7 +8,6 @@ export type {
   MegaMenuCategory,
   MegaMenuConfig,
   MegaMenuFooter,
-  MegaMenuIconName,
   MegaMenuItem,
   MegaMenuLink,
   MegaMenuPanel,
