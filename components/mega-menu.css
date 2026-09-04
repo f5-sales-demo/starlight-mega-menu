@@ -232,11 +232,6 @@
   color: var(--sl-color-accent);
 }
 
-.smm-link-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
 .smm-svg-image {
   display: block;
   object-fit: contain;
@@ -512,11 +507,6 @@
   height: 1.125rem;
   margin-top: 0.125rem;
   color: var(--sl-color-gray-3);
-}
-
-.smm-mobile-link-icon svg {
-  width: 100%;
-  height: 100%;
 }
 
 .smm-mobile-link-text {
