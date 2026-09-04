@@ -36,7 +36,7 @@
     "withastro"
   ],
   "scripts": {
-    "test": "npm run typecheck && node --import tsx --test tests/*.test.mjs",
+    "test": "npm run typecheck && TSX_TSCONFIG_PATH=tests/tsconfig.json node --import tsx --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

@@ -55,7 +55,12 @@ test('renders currentColor descriptors as encoded masks', () => {
 });
 
 test('does not emit wrappers for invalid icon input', () => {
-  for (const icon of ['missing', {}, { body: '', width: 24, height: 24, mode: 'original' }, { body: '<path/>', width: 0, height: 24, mode: 'currentColor' }]) {
+  for (const icon of [
+    'missing',
+    {},
+    { body: '', width: 24, height: 24, mode: 'original' },
+    { body: '<path/>', width: 0, height: 24, mode: 'currentColor' },
+  ]) {
     assert.equal(render(icon), '');
   }
 });

@@ -1,7 +1,8 @@
-import * as React from 'react';
+/** @jsxRuntime automatic */
+import type * as React from 'react';
+import type { MegaMenuSvgIcon } from '../types.ts';
 import type { MegaMenuIconName } from './icons.tsx';
 import { ICONS } from './icons.tsx';
-import type { MegaMenuSvgIcon } from '../types.ts';
 
 interface MegaMenuIconProps {
   icon: MegaMenuIconName | MegaMenuSvgIcon | undefined;

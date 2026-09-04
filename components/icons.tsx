@@ -1,4 +1,5 @@
-import * as React from 'react';
+/** @jsxRuntime automatic */
+import type * as React from 'react';
 
 /**
  * Vetted inline-SVG icon registry for mega-menu link icons.
